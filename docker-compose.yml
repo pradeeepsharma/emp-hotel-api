@@ -3,17 +3,23 @@ services:
   db:
     image: mysql:latest
     restart: always
+    container_name: mysql_db
     environment:
-      MYSQL_DATABASE: 'emp'
-      MYSQL_USER: 'user'
+      MYSQL_DATABASE: 'emp_db'
+      MYSQL_USER: 'root'
       MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'root'
     ports:
       - '3306:3306'
     expose:
       - '3306'
     volumes:
       - my-db:/var/lib/mysql
+  mysql_client:
+    image: adminer
+    restart: always
+    ports:
+      - 9000:8080
 # Names our volume
 volumes:
   my-db:
