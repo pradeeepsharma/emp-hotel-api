@@ -25,8 +25,8 @@ public class HotelCotntroller {
         return new ResponseEntity<>(hotelService.getHotels(), HttpStatus.OK);
     }
 
-    /*@GetMapping(value = "/hotels/{id}")
-    public ResponseEntity<HotelResponse> getHotelDetails(@PathVariable String id){
-
-    }*/
+    @GetMapping(value = "/hotels/{id}")
+    public ResponseEntity<HotelResponse> getHotelDetails(@PathVariable Integer id){
+        return new ResponseEntity<>(hotelService.getHotel(id), HttpStatus.OK);
+    }
 }

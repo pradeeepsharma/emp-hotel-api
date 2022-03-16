@@ -1,6 +1,5 @@
 package com.hcl.cloudnative.emp.hotel.service;
 
-import com.hcl.cloudnative.emp.hotel.domain.Hotel;
 import com.hcl.cloudnative.emp.hotel.exception.HotelNotFoundException;
 import com.hcl.cloudnative.emp.hotel.mapper.HotelMapper;
 import com.hcl.cloudnative.emp.hotel.model.HotelResponse;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class HotelService {
@@ -30,8 +28,9 @@ public class HotelService {
         return hotels;
     }
 
-    public Hotel getHotel(Integer id){
-      return repository.findById(id).orElseThrow(()->new HotelNotFoundException("No Hotel found for given id :"+id));
+    public HotelResponse getHotel(Integer id){
+      return repository.findById(id).map(mapper::mapToResponse).orElseThrow(()->new HotelNotFoundException("No Hotel found for given id :"+id));
     }
+
 
 }

@@ -1,5 +1,5 @@
 DROP TABLE hotel IF EXISTS;
-CREATE TABLE emp_db.hotel(
+CREATE TABLE hotel(
     id INTEGER(10),
     name VARCHAR(250),
     address VARCHAR(300),
